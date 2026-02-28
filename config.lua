@@ -1,7 +1,10 @@
 -- TS TEST
 
+local framework = GetResourceState('es_extended') == 'started' and 'esx' or 'qb'
+
 return {
-    core = exports['qb-core']:GetCoreObject(),
+    core = framework == 'esx' and exports['es_extended']:getSharedObject() or exports['qb-core']:GetCoreObject(),
+    framework = framework,
     speedType = 'KMH', -- KMH or MPH
     hudKeybind = 'I',
     isLowFuelChecked = true,
